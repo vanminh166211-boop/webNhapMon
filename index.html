@@ -3,119 +3,566 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZEROTRACE- Website ban hang</title>
+    <meta
+      name="description"
+      content="Tạp Hóa Bà Năm tại Thôn Thị Tứ, Xã Võ Lao, Tỉnh Lào Cai. Xem sản phẩm, khuyến mãi và liên hệ đặt hàng nhanh."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://vanminh166211-boop.github.io/webNhapMon/" />
+    <meta property="og:title" content="Tạp Hóa Bà Năm" />
+    <meta
+      property="og:description"
+      content="Tạp hóa phục vụ thực phẩm, đồ uống, đồ khô và đồ dùng gia đình tại Thôn Thị Tứ, Xã Võ Lao, Tỉnh Lào Cai."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vanminh166211-boop.github.io/webNhapMon/" />
+    <title>Tạp Hóa Bà Năm - Tạp hóa thông minh tiện lợi</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
     <header class="header">
-      <a class="logo" href="#">ZEROTRACE</a>
+      <a class="logo" href="#">Tạp Hóa Bà Năm</a>
 
-      <nav class="menu">
-        <a href="#san-pham">San pham</a>
-        <a href="#khuyen-mai">Khuyen mai</a>
-        <a href="#lien-he">Lien he</a>
+      <nav class="menu" aria-label="Điều hướng chính">
+        <a href="#danh-muc">Danh mục</a>
+        <a href="#san-pham">Sản phẩm</a>
+        <a href="#khach-hang">Khách hàng</a>
+        <a href="#chu-cua-hang">Chủ cửa hàng</a>
+        <a href="#them-hang">Thêm hàng</a>
+        <a href="#khuyen-mai">Khuyến mãi</a>
       </nav>
 
-      <button class="cart-button">Gio hang</button>
+      <button class="cart-button" id="cartButton" type="button">
+        Giỏ hàng <span id="cartCount">0</span>
+      </button>
     </header>
+
+    <div class="cart-overlay" id="cartOverlay" hidden></div>
+    <aside class="cart-panel" id="cartPanel" aria-label="Giỏ hàng" aria-hidden="true">
+      <div class="cart-panel-header">
+        <div>
+          <p class="eyebrow">Giỏ hàng</p>
+          <h2>Hàng đã chọn</h2>
+        </div>
+        <button class="close-button" id="closeCartButton" type="button" aria-label="Đóng giỏ hàng">Đóng</button>
+      </div>
+
+      <div class="cart-list" id="cartList"></div>
+      <p class="empty-cart" id="emptyCart">Chưa có mặt hàng nào trong giỏ.</p>
+
+      <div class="cart-summary">
+        <strong id="cartSummary">0 mặt hàng</strong>
+        <a class="primary-button" id="orderPhoneButton" href="tel:0827276431">Đặt hàng: 0827276431</a>
+      </div>
+    </aside>
 
     <main>
       <section class="hero">
         <div class="hero-content">
-          <p class="eyebrow">Bo suu tap moi</p>
-          <h1>Do cong nghe dep, gon, de dung moi ngay</h1>
+          <p class="eyebrow">Mua sắm mỗi ngày</p>
+          <h1>Tạp Hóa Bà Năm - mua sắm tiện lợi cho mọi nhà</h1>
           <p class="hero-text">
-            Chon nhanh nhung san pham ban chay voi gia tot va giao hang tan noi.
+            Tạp hóa phục vụ thực phẩm, đồ uống, đồ khô và đồ dùng gia đình tại
+            Thôn Thị Tứ, Xã Võ Lao, Tỉnh Lào Cai.
           </p>
-          <a class="primary-button" href="#san-pham">Mua ngay</a>
+          <div class="hero-actions">
+            <a class="primary-button" href="#san-pham">Xem sản phẩm</a>
+            <a class="secondary-button" href="#khuyen-mai">Xem khuyến mãi</a>
+          </div>
         </div>
       </section>
 
-      <section class="section">
-        <h2>Danh muc noi bat</h2>
+      <section class="section intro-grid">
+        <article class="info-panel">
+          <span>7:00 - 22:00</span>
+          <h2>Phục vụ mua sắm hằng ngày</h2>
+          <p>
+            Khách có thể ghé mua trực tiếp tại cửa hàng hoặc liên hệ trước qua
+            số 0827276431 để hỏi hàng.
+          </p>
+        </article>
 
-        <div class="category-list">
-          <article class="category-card">
-            <span class="category-icon">DT</span>
-            <h3>Dien thoai</h3>
-            <p>May moi, bao hanh ro rang.</p>
-          </article>
-
-          <article class="category-card">
-            <span class="category-icon">LT</span>
-            <h3>Laptop</h3>
-            <p>Phu hop hoc tap va lam viec.</p>
-          </article>
-
-          <article class="category-card">
-            <span class="category-icon">PK</span>
-            <h3>Phu kien</h3>
-            <p>Sac, tai nghe, chuot, ban phim.</p>
-          </article>
-        </div>
+        <article class="info-panel accent">
+          <span>Ưu đãi tuần này</span>
+          <h2>Nhiều ưu đãi tại cửa hàng</h2>
+          <p>
+            Các mặt hàng có nhãn khuyến mãi được áp dụng khi đến mua đồ trực
+            tiếp tại Tạp Hóa Bà Năm.
+          </p>
+        </article>
       </section>
 
-      <section class="section" id="san-pham">
+      <section class="section" id="danh-muc">
         <div class="section-title">
-          <h2>San pham ban chay</h2>
-          <a href="#">Xem tat ca</a>
+          <div>
+            <p class="eyebrow">Loại hàng</p>
+            <h2>Bấm vào danh mục để xem mặt hàng tương ứng</h2>
+          </div>
         </div>
 
-        <div class="product-grid">
-          <article class="product-card">
-            <img
-              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80"
-              alt="Dien thoai thong minh mau den"
+        <div
+          class="category-list"
+          id="categoryList"
+          aria-label="Danh mục sản phẩm"
+        ></div>
+      </section>
+
+      <section class="section product-section" id="san-pham">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow" id="activeCategoryLabel">Tất cả sản phẩm</p>
+            <h2 id="productTitle">Sản phẩm tại Tạp Hóa Bà Năm</h2>
+          </div>
+
+          <label class="search-box">
+            <span>Tìm kiếm</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Nhập tên mặt hàng..."
             />
-            <div class="product-info">
-              <h3>Dien thoai Pro X</h3>
-              <p>Man hinh dep, pin lau, camera ro net.</p>
-              <strong>9.990.000 VND</strong>
-              <button>Them vao gio</button>
-            </div>
+          </label>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>
+          Chưa có sản phẩm phù hợp.
+        </p>
+      </section>
+
+      <section class="section audience-section" id="khach-hang">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Dành cho khách hàng</p>
+            <h2>Mua sắm nhanh tại Tạp Hóa Bà Năm</h2>
+          </div>
+        </div>
+
+        <div class="audience-grid">
+          <article class="audience-card">
+            <span>01</span>
+            <h3>Xem hàng theo danh mục</h3>
+            <p>Bấm vào từng loại hàng để xem đúng mặt hàng cần mua.</p>
           </article>
 
-          <article class="product-card">
-            <img
-              src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80"
-              alt="Laptop dat tren ban lam viec"
-            />
-            <div class="product-info">
-              <h3>Laptop Air 14</h3>
-              <p>Nhe, nhanh, phu hop hoc lap trinh.</p>
-              <strong>15.490.000 VND</strong>
-              <button>Them vao gio</button>
-            </div>
+          <article class="audience-card">
+            <span>02</span>
+            <h3>Chọn sản phẩm khuyến mãi</h3>
+            <p>Các sản phẩm có nhãn khuyến mãi được ưu đãi khi mua tại cửa hàng.</p>
           </article>
 
-          <article class="product-card">
-            <img
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80"
-              alt="Tai nghe mau den"
-            />
-            <div class="product-info">
-              <h3>Tai nghe Bass Plus</h3>
-              <p>Am thanh manh, deo em, chong on tot.</p>
-              <strong>1.290.000 VND</strong>
-              <button>Them vao gio</button>
-            </div>
+          <article class="audience-card">
+            <span>03</span>
+            <h3>Liên hệ trước khi ghé</h3>
+            <p>Gọi 0827276431 để hỏi hàng, giá bán hoặc chương trình mua sắm hiện có.</p>
           </article>
         </div>
+      </section>
+
+      <section class="section owner-section" id="chu-cua-hang">
+        <div class="form-copy">
+          <p class="eyebrow">Dành cho chủ cửa hàng</p>
+          <h2>Quản lý danh sách hàng bán</h2>
+          <p>
+            Chủ Tạp Hóa Bà Năm có thể bổ sung mặt hàng mới, đánh dấu khuyến mãi
+            và kiểm tra sản phẩm theo từng nhóm hàng.
+          </p>
+        </div>
+
+        <div class="owner-tools">
+          <form class="owner-login" id="ownerLoginForm">
+            <label>
+              Mật khẩu chủ cửa hàng
+              <input id="ownerPassword" type="password" placeholder="Nhập mật khẩu" required />
+            </label>
+            <button class="primary-button" type="submit">Mở phần quản lý</button>
+            <p id="ownerLoginMessage">Cần mật khẩu để thêm hoặc thay đổi mặt hàng.</p>
+          </form>
+
+          <article class="owner-note" id="ownerNote" hidden>
+            <strong>Đã mở phần quản lý</strong>
+            <p>Bạn có thể thêm hàng mới và đánh dấu sản phẩm khuyến mãi ở biểu mẫu bên dưới.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section add-section owner-private" id="them-hang" hidden>
+        <div class="form-copy">
+          <p class="eyebrow">Bổ sung hàng mới</p>
+          <h2>Thêm mặt hàng chưa có trong danh sách</h2>
+          <p>
+            Điền tên, mục hàng, giá, hình ảnh và mô tả ngắn. Sản phẩm mới sẽ
+            xuất hiện ngay trong đúng danh mục.
+          </p>
+        </div>
+
+        <form class="add-form" id="addProductForm">
+          <label>
+            Tên mặt hàng
+            <input
+              id="productName"
+              type="text"
+              placeholder="Ví dụ: Bánh quy bơ"
+              required
+            />
+          </label>
+
+          <div class="form-row">
+            <label>
+              Loại hàng
+              <select id="productCategory" required></select>
+            </label>
+
+            <label>
+              Giá bán
+              <input
+                id="productPrice"
+                type="text"
+                placeholder="45.000đ"
+                required
+              />
+            </label>
+          </div>
+
+          <label>
+            Hình ảnh mặt hàng
+            <input
+              id="productImage"
+              type="url"
+              placeholder="Dán link hình ảnh sản phẩm"
+            />
+          </label>
+
+          <label>
+            Chọn ảnh từ máy
+            <input id="productImageFile" type="file" accept="image/*" />
+          </label>
+
+          <div class="image-preview">
+            <img id="productImagePreview" src="" alt="Ảnh xem trước mặt hàng" hidden />
+            <span id="imagePreviewText">Chưa chọn ảnh hàng hóa</span>
+          </div>
+
+          <label>
+            Mô tả
+            <textarea
+              id="productDescription"
+              rows="3"
+              placeholder="Mô tả ngắn về sản phẩm"
+              required
+            ></textarea>
+          </label>
+
+          <label class="checkbox-field">
+            <input id="productSale" type="checkbox" />
+            Đang khuyến mãi
+          </label>
+
+          <button class="primary-button" type="submit">Thêm mặt hàng</button>
+        </form>
       </section>
 
       <section class="sale-banner" id="khuyen-mai">
         <div>
-          <p class="eyebrow">Khuyen mai cuoi tuan</p>
-          <h2>Giam den 30% cho phu kien cong nghe</h2>
+          <p class="eyebrow">Khuyến mãi</p>
+          <h2>Ưu đãi khi đến mua đồ tại Tạp Hóa Bà Năm</h2>
+          <p>
+            Khách đến cửa hàng tại Thôn Thị Tứ, Xã Võ Lao, Tỉnh Lào Cai sẽ được
+            áp dụng khuyến mãi cho các sản phẩm có nhãn ưu đãi.
+          </p>
         </div>
-        <a class="secondary-button" href="#san-pham">Xem uu dai</a>
+        <a class="secondary-button" href="#san-pham">Chọn hàng ngay</a>
       </section>
     </main>
 
-    <footer class="footer" id="lien-he">
-      <p>ZEROTRACE</p>
-      <p>Email: vanminh166211@gmail.com| Hotline: 0375942512</p>
+    <footer class="footer">
+      <p>Tạp Hóa Bà Năm</p>
+      <p>Địa điểm: Thôn Thị Tứ, Xã Võ Lao, Tỉnh Lào Cai</p>
+      <p>Liên hệ: 0827276431</p>
     </footer>
+
+    <script>
+      const categories = [{
+          id: "all",
+          name: "Tất cả",
+          icon: "BN",
+          note: "Toàn bộ sản phẩm"
+      }, {
+          id: "fresh",
+          name: "Đồ đông lạnh",
+          icon: "DL",
+          note: "Xúc xích, viên thả lẩu"
+      }, {
+          id: "drink",
+          name: "Đồ uống",
+          icon: "DU",
+          note: "Sữa, nước ép, trà"
+      }, {
+          id: "dry",
+          name: "Đồ khô",
+          icon: "DK",
+          note: "Gạo, mì, gia vị"
+      }, {
+          id: "home",
+          name: "Gia dụng",
+          icon: "GD",
+          note: "Vệ sinh, bếp, nhà cửa"
+      }, {
+          id: "snack",
+          name: "Bánh kẹo",
+          icon: "BK",
+          note: "Ăn vặt, quà tặng"
+      }];
+
+      const defaultProducts = [{
+          name: "Xúc xích đông lạnh",
+          category: "fresh",
+          price: "58.000đ",
+          description: "Gói 500g, bảo quản ngăn đông, tiện chiên hoặc nướng.",
+          sale: true,
+          image: "https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Viên thả lẩu đông lạnh",
+          category: "fresh",
+          price: "72.000đ",
+          description: "Túi 500g, nhiều loại viên, phù hợp nấu lẩu và mì.",
+          sale: false,
+          image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Sữa tươi ít đường",
+          category: "drink",
+          price: "36.000đ",
+          description: "Hộp 1 lít, vị thanh, dùng cho cả gia đình.",
+          sale: true,
+          image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Nước ép cam nguyên chất",
+          category: "drink",
+          price: "42.000đ",
+          description: "Chai 1 lít, không gas, dùng lạnh ngon hơn.",
+          sale: false,
+          image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Gạo thơm Jasmine",
+          category: "dry",
+          price: "165.000đ",
+          description: "Túi 5kg, hạt dài, cơm mềm và thơm.",
+          sale: true,
+          image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Mì trứng cao cấp",
+          category: "dry",
+          price: "24.000đ",
+          description: "Gói 400g, dễ chế biến cho món xào và nước.",
+          sale: false,
+          image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Nước rửa chén hương chanh",
+          category: "home",
+          price: "31.000đ",
+          description: "Chai 750ml, sạch dầu mỡ, mùi nhẹ.",
+          sale: true,
+          image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Khăn giấy hộp",
+          category: "home",
+          price: "22.000đ",
+          description: "Hộp 180 tờ, mềm, tiện dùng trong bếp và phòng khách.",
+          sale: false,
+          image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=900&q=80"
+      }, {
+          name: "Bánh quy bơ",
+          category: "snack",
+          price: "48.000đ",
+          description: "Hộp 320g, giòn thơm, phù hợp uống cùng trà.",
+          sale: true,
+          image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80"
+      }];
+
+      const savedProducts = JSON.parse(localStorage.getItem("tapHoaBaNamProducts") || "[]");
+      let products = [...savedProducts, ...defaultProducts];
+      const defaultProductImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaCqjzEwLzdtLM79JsVh1P9e_T_Eoe5Obftg&s";
+
+      const categoryList = document.querySelector("#categoryList");
+      const productGrid = document.querySelector("#productGrid");
+      const productCategory = document.querySelector("#productCategory");
+      const activeCategoryLabel = document.querySelector("#activeCategoryLabel");
+      const productTitle = document.querySelector("#productTitle");
+      const searchInput = document.querySelector("#searchInput");
+      const emptyState = document.querySelector("#emptyState");
+      const cartCount = document.querySelector("#cartCount");
+      const form = document.querySelector("#addProductForm");
+      const productImageInput = document.querySelector("#productImage");
+      const productImageFile = document.querySelector("#productImageFile");
+      const productImagePreview = document.querySelector("#productImagePreview");
+      const imagePreviewText = document.querySelector("#imagePreviewText");
+
+      let activeCategory = "all";
+      let cartTotal = 0;
+      let selectedImageData = "";
+
+      function getCategoryName(categoryId) {
+          return categories.find((category) => category.id === categoryId)?.name || "Sản phẩm mới";
+      }
+
+      function showImagePreview(imageSource) {
+          if (!imageSource) {
+              productImagePreview.hidden = true;
+              productImagePreview.src = "";
+              imagePreviewText.hidden = false;
+              return;
+          }
+
+          productImagePreview.src = imageSource;
+          productImagePreview.hidden = false;
+          imagePreviewText.hidden = true;
+      }
+
+      function saveCustomProducts() {
+          localStorage.setItem(
+            "tapHoaBaNamProducts",
+              JSON.stringify(products.filter((product) => product.custom))
+          );
+      }
+
+      function renderCategories() {
+          categoryList.innerHTML = categories
+              .map((category) => {
+                  const count = category.id === "all" ?
+                      products.length :
+                      products.filter((product) => product.category === category.id).length;
+
+                  return `
+            <button class="category-card ${category.id === activeCategory ? "active" : ""}" type="button" data-category="${category.id}">
+              <span class="category-icon">${category.icon}</span>
+              <strong>${category.name}</strong>
+              <small>${category.note}</small>
+              <em>${count} mặt hàng</em>
+            </button>
+          `;
+              })
+              .join("");
+      }
+
+      function renderCategoryOptions() {
+          productCategory.innerHTML = categories
+              .filter((category) => category.id !== "all")
+              .map((category) => `<option value="${category.id}">${category.name}</option>`)
+              .join("");
+      }
+
+      function renderProducts() {
+          const keyword = searchInput.value.trim().toLowerCase();
+          const filteredProducts = products.filter((product) => {
+              const matchCategory = activeCategory === "all" || product.category === activeCategory;
+              const matchKeyword = product.name.toLowerCase().includes(keyword) ||
+                  product.description.toLowerCase().includes(keyword);
+
+              return matchCategory && matchKeyword;
+          });
+
+          activeCategoryLabel.textContent = getCategoryName(activeCategory);
+        productTitle.textContent = activeCategory === "all" ?
+              "Sản phẩm tại Tạp Hóa Bà Năm" :
+              `Mặt hàng ${getCategoryName(activeCategory).toLowerCase()}`;
+
+          productGrid.innerHTML = filteredProducts
+              .map((product) => `
+          <article class="product-card">
+            <img src="${product.image || defaultProductImage}" alt="${product.name}" onerror="this.src='${defaultProductImage}'" />
+            <div class="product-info">
+              <div class="product-topline">
+                <span>${getCategoryName(product.category)}</span>
+                ${product.sale ? "<mark>Khuyến mãi</mark>" : ""}
+              </div>
+              <h3>${product.name}</h3>
+              <p class="product-category">Mục: ${getCategoryName(product.category)}</p>
+              <p>${product.description}</p>
+              <strong>${product.price}</strong>
+              <button type="button" data-add-cart>Thêm vào giỏ</button>
+            </div>
+          </article>
+        `)
+              .join("");
+
+          emptyState.hidden = filteredProducts.length > 0;
+      }
+
+      categoryList.addEventListener("click", (event) => {
+          const categoryButton = event.target.closest("[data-category]");
+          if (!categoryButton) return;
+
+          activeCategory = categoryButton.dataset.category;
+          renderCategories();
+          renderProducts();
+          document.querySelector("#san-pham").scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+          });
+      });
+
+      productGrid.addEventListener("click", (event) => {
+          if (!event.target.matches("[data-add-cart]")) return;
+
+          cartTotal += 1;
+          cartCount.textContent = cartTotal;
+      });
+
+      searchInput.addEventListener("input", renderProducts);
+
+      productImageInput.addEventListener("input", () => {
+          selectedImageData = "";
+          showImagePreview(productImageInput.value.trim());
+      });
+
+      productImageFile.addEventListener("change", () => {
+          const file = productImageFile.files[0];
+          if (!file) {
+              selectedImageData = "";
+              showImagePreview(productImageInput.value.trim());
+              return;
+          }
+
+          const reader = new FileReader();
+          reader.addEventListener("load", () => {
+              selectedImageData = reader.result;
+              showImagePreview(selectedImageData);
+          });
+          reader.readAsDataURL(file);
+      });
+
+      form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const newProduct = {
+              name: document.querySelector("#productName").value.trim(),
+              category: productCategory.value,
+              price: document.querySelector("#productPrice").value.trim(),
+              description: document.querySelector("#productDescription").value.trim(),
+              sale: document.querySelector("#productSale").checked,
+              image: selectedImageData || productImageInput.value.trim() || defaultProductImage,
+              custom: true
+          };
+
+          products.unshift(newProduct);
+          saveCustomProducts();
+
+          activeCategory = productCategory.value;
+          form.reset();
+          selectedImageData = "";
+          showImagePreview("");
+          renderCategories();
+          renderProducts();
+          document.querySelector("#san-pham").scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+          });
+      });
+
+      renderCategoryOptions();
+      renderCategories();
+      renderProducts();
+    </script>
   </body>
 </html>

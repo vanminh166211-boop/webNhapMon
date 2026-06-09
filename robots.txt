@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vanminh166211-boop.github.io/webNhapMon/sitemap.xml
